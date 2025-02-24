@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.example</groupId>
-    <artifactId>ProductCatalogService_Feb2025</artifactId>
+    <artifactId>productcatalogservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ProductCatalogService_Feb2025</name>
-    <description>ProductCatalogService_Feb2025</description>
+    <name>ProductCatalogService</name>
+    <description>ProductCatalogService</description>
     <url/>
     <licenses>
         <license/>
@@ -41,11 +41,19 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.projectlombok</groupId>-->
+<!--            <artifactId>lombok</artifactId>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.30</version>  <!-- Use the latest version -->
+            <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

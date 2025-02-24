@@ -1,4 +1,4 @@
-package org.example.productcatalogservice_feb2025;
+package org.example.productcatalogservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

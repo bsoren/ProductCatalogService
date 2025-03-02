@@ -11,5 +11,5 @@ public class ProductDto {
     String description;
     String imageUrl;
     Double price;
-    CategoryDto category;
+    Long categoryId;
 }

@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
-@Service
+@Service("fakeStoreProductService")
 public class FakeStoreProductService implements IProductService {
 
     private final RestTemplateBuilder restTemplateBuilder;
@@ -151,7 +151,7 @@ public class FakeStoreProductService implements IProductService {
         fakeProductDto.setTitle(productDto.getName());
         fakeProductDto.setPrice(productDto.getPrice());
         fakeProductDto.setDescription(productDto.getDescription());
-        fakeProductDto.setCategory(productDto.getCategory().getName());
+        fakeProductDto.setCategory(null);
         fakeProductDto.setImage(productDto.getImageUrl());
         return fakeProductDto;
     }

@@ -3,9 +3,11 @@ package org.example.productcatalogservice.controllers;
 import org.example.productcatalogservice.dtos.CategoryDto;
 import org.example.productcatalogservice.dtos.ProductDto;
 import org.example.productcatalogservice.exceptions.ProductNotFoundException;
+import org.example.productcatalogservice.models.Category;
 import org.example.productcatalogservice.models.Product;
 import org.example.productcatalogservice.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,12 +17,13 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
+    @Qualifier("storageProductService")
     private IProductService productService;
 
     @GetMapping("/products")
     public List<ProductDto> getAllProducts() {
         List<ProductDto> productDtos = new ArrayList<>();
-        List<Product> allProducts = productService.getAllProducts();
+        List<Product> allProducts = this.productService.getAllProducts();
         for (Product product: allProducts) {
             productDtos.add(from(product));
         }
@@ -68,19 +71,17 @@ public class ProductController {
         productDto.setDescription(product.getDescription());
         productDto.setPrice(product.getPrice());
         productDto.setImageUrl(product.getImageUrl());
-        if(product.getCategory() != null) {
+
+        Category category = product.getCategory();
+        if(category != null) {
             CategoryDto categoryDto = new CategoryDto();
-            categoryDto.setName(product.getCategory().getName());
-            categoryDto.setId(product.getCategory().getId());
-            categoryDto.setDescription(product.getCategory().getDescription());
-            productDto.setCategory(categoryDto);
+            categoryDto.setName(category.getName());
+            categoryDto.setId(category.getId());
+            categoryDto.setDescription(category.getDescription());
+            productDto.setCategoryId(category.getId());
         }
+
         return productDto;
     }
 
-    private Product from(ProductDto productDto) {
-        Product product = new Product();
-        product.setName(productDto.getName());
-        return  product;
-    }
 }

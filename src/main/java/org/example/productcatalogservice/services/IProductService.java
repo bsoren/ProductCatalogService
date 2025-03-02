@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IProductService {
     Product getProductById(Long id);
+
     List<Product> getAllProducts();
 
     Product replaceProduct(Long id, ProductDto productDto);
